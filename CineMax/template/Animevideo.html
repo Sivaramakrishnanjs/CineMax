@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/Avideo.css'%}">
+
+<div class="container">
+    <div class="row">
+        {% for x in VAM %}
+        <div class="col-md-12">
+            <video id="video" width="100%" controls autoplay muted>
+                <source src="{{ x.watch_trailer.url }}" type="video/mp4">
+            </video>
+            <div class="controls mb-4">
+                <button id="go-back" class="go-back"><i class="fas fa-arrow-left icon"></i> Go Back</button>
+                <button id="play-pause" class="play-pause"><i class="fas fa-play icon"></i> Play</button>
+                <button id="lock-screen-toggle" class="lock-screen-toggle">
+                    <i class="fas fa-lock icon"></i> Lock Screen
+                    <i class="fas fa-unlock icon" style="display: none;"></i>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById('video');
+    const lockButton = document.getElementById('lock-screen-toggle');
+    const goBackButton = document.getElementById('go-back');
+    const playPauseButton = document.getElementById('play-pause');
+    const playIcon = '<i class="fas fa-play icon"></i> Play';
+    const pauseIcon = '<i class="fas fa-pause icon"></i> Pause';
+
+    lockButton.addEventListener('click', function () {
+        if (video.controls) {
+            video.controls = false;
+            lockButton.textContent = 'Unlock Screen';
+            goBackButton.disabled = true;
+            playPauseButton.disabled = true;
+        } else {
+            video.controls = true;
+            lockButton.textContent = 'Lock Screen';
+            goBackButton.disabled = false;
+            playPauseButton.disabled = false;
+        }
+    });
+
+    goBackButton.addEventListener('click', function () {
+        window.history.back();
+    });
+
+    playPauseButton.addEventListener('click', function () {
+        if (video.paused) {
+            video.play();
+            playPauseButton.innerHTML = pauseIcon;
+        } else {
+            video.pause();
+            playPauseButton.innerHTML = playIcon;
+        }
+    });
+
+    // Show pause icon initially
+    playPauseButton.innerHTML = pauseIcon;
+</script>
+
+{% endblock 'main' %}

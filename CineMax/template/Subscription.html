@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+    <div class="container">
+        <b>
+            <h5 class="text-center text-warning">CHOOSE YOUR SUBSCRIPTION</h5>
+        </b>
+        <div class="row justify-content-center">
+            <!-- Monthly Plan (₹149/3 months) -->
+            <div class="col-md-6 col-sm-12">
+                <div class="subscription-card">
+                    <h4>Monthly Plan</h4>
+                    <i class="fas fa-film fa-2x"></i>
+                    <div class="price">₹ 149/3 months</div>
+                    <div class="plan-type">Access to Hollywood, Tamil, Web Series, Anime, and Korean Movies</div>
+
+                    <a href="{% url 'create_order' 'monthly_3' %}">
+                        <button class="subscription-button monthly-plan">
+                            <i class="fas fa-play icon"></i> Subscribe Now
+                        </button>
+                    </a>
+
+                    {% if already_subscribed == 'monthly_3' %}
+                    <div class="alert alert-warning mt-2" role="alert">
+                        <strong>You have already subscribed to this plan!</strong>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Monthly Plan (₹499/6 months) -->
+            <div class="col-md-6 col-sm-12">
+                <div class="subscription-card">
+                    <h4>Monthly Plan</h4>
+                    <i class="fas fa-film fa-2x"></i>
+                    <div class="price">₹ 499/6 months</div>
+                    <div class="plan-type">Access to Hollywood, Tamil, Web Series, Anime, and Korean Movies</div>
+
+                    <a href="{% url 'create_order' 'monthly_6' %}">
+                        <button class="subscription-button monthly-plan">
+                            <i class="fas fa-play icon"></i> Subscribe Now
+                        </button>
+                    </a>
+
+                    {% if already_subscribed == 'monthly_6' %}
+                    <div class="alert alert-warning mt-2" role="alert">
+                        <strong>You have already subscribed to this plan!</strong>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Yearly Plan (₹999/1 year) -->
+            <div class="col-md-6 col-sm-12">
+                <div class="subscription-card">
+                    <h4>Yearly Plan</h4>
+                    <i class="fas fa-tv fa-2x"></i>
+                    <div class="price">₹ 999/1 year</div>
+                    <div class="plan-type">Access to Hollywood, Tamil, Web Series, Anime, and Korean Movies</div>
+
+                    <a href="{% url 'create_order' 'yearly' %}">
+                        <button class="subscription-button yearly-plan">
+                            <i class="fas fa-check icon"></i> Subscribe Now
+                        </button>
+                    </a>
+
+                    {% if already_subscribed == 'yearly' %}
+                    <div class="alert alert-warning mt-2" role="alert">
+                        <strong>You have already subscribed to this plan!</strong>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock 'main' %}

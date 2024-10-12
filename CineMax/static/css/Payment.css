@@ -1,0 +1,44 @@
+.razorpay-icon {
+    color: #ff9800;
+    /* Icon color */
+}
+
+.payment-button {
+    background-color: #2196F3;
+    /* Unique blue color for the button */
+    color: white;
+    /* Text color for better visibility */
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    /* Center icon and text vertically */
+    justify-content: center;
+    /* Center the button content */
+    margin-top: 20px;
+    /* Spacing above the button */
+}
+
+.payment-button:hover {
+    background-color: #1976D2;
+    /* Darker shade on hover */
+}
+
+.payment-container {
+    background-color: #FFD54F;
+    /* Unique yellow color for the container */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    /* Center text in the container */
+}
+
+.payment-button i {
+    margin-right: 10px;
+    /* Space between icon and text */
+}

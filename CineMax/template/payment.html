@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+
+<div class="container mt-5 payment-container">
+    <h1><i class="fas fa-credit-card razorpay-icon"></i> Complete Your Payment</h1>
+    <form action="{% url 'payment_success' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="order_id" value="{{ order_id }}">
+        <input type="hidden" name="plan_type" value="{{ plan_type }}">
+        <input type="hidden" name="amount" value="{{ amount }}">
+        <script src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="rzp_test_VZbpcH0s33sGpv"
+                data-amount="{{ amount }}"
+                data-currency="INR"
+                data-order_id="{{ order_id }}"
+                data-buttontext="Pay Now"
+                data-name="CineMax"
+                data-description="Subscription Payment"
+                data-image="https://pbs.twimg.com/profile_images/1802687181137543171/O-DgOoA3_400x400.jpg"
+                data-prefill.name="{{ request.user.username }}"
+                data-prefill.email="{{ request.user.email }}">
+        </script>
+       
+    </form>
+</div>
+
+{% endblock 'main' %}

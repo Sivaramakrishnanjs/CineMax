@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+
+<div class="container">
+    <div class="row">
+        {% for x in tmovies %}
+        <div class="col-md-12">
+            <div class="play-img-container">
+                <img src="{{ x.poster1image.url }}" alt="" class="play-img">
+                <a href="/videoTM/{{x.id}}"><button class="watch-trailer-btn"><i class="fas fa-play-circle"></i> Watch
+                        Trailer</button></a>
+            </div>
+        </div>
+        <div class="copy-right text-light">
+            <b>&copy; 2024. All Rights Reserved By CineMax.</b>
+        </div>
+        <div class="col-md-4">
+            <img src="{{ x.poster2image.url }}" alt="{{ x.card_name}}" class="poster-img">
+        </div>
+        <div class="col-md-8">
+            <h1 class="display-4"><b>{{ x.title }}</b></h1>
+            <p>{{ x.description1 }}</p>
+            <div class="tags">
+                <span>Action</span>&nbsp;
+                <span>Adventure</span>&nbsp;
+                <span>4K</span>&nbsp;
+            </div>
+            <div class="rating">
+                <p>
+                    {% for i in "12345" %}
+                    {% if forloop.counter <= x.rating %} <i class="fas fa-star"></i>
+                        <!-- : Displays a filled star icon (fas fa-star) if the loop counter is less than or equal to x.rating. -->
+                        {% else %}
+                        <i class="far fa-star"></i>
+                        {% endif %}
+                        {% endfor %}
+                        {{ x.rating }}
+                </p>
+            </div>
+            <p>
+                <i class="fas fa-clock"></i> {{ x.runtime }}
+            </p>
+            <p>
+                <i class="fas fa-calendar-alt"></i> Release Date: {{ x.release_date }}
+            </p>
+            <p>{{ x.description2 }}</p>
+            <div class="button-group">
+                <button class="btn btn-watch-movie btn-lg">
+                    <a href="{% url 'subscription_plans' %}" class="text-white" style="text-decoration: none;">
+                        <i class="bi bi-play-circle-fill"></i> Watch Movie
+                </button>
+                <button class="btn btn-add-to-watchlist btn-lg">
+                    <a href="{% url 'add_to_watchlist' 'tamilMovies' x.id %}" class="text-white"style="text-decoration: none;">
+                        <i class="bi bi-plus-circle-fill"></i> Add to Watchlist
+                    </a>
+                </button>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row mt-5">
+        {% for x in tmovies %}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white">
+                <div class="image-card">
+                    <img src="{{ x.actorimage1.url }}" alt="{{ x.actorname1 }}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ x.actorname1 }}</h5>
+                    <p class="card-text">{{ x.actor1bio }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white">
+                <div class="image-card">
+                    <img src="{{ x.actorimage2.url }}" alt="{{ x.actorname2 }}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ x.actorname2 }}</h5>
+                    <p class="card-text">{{ x.actor2bio }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white">
+                <div class="image-card">
+                    <img src="{{ x.actressimage3.url }}" alt="{{ x.actressname3 }}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ x.actressname3 }}</h5>
+                    <p class="card-text">{{ x.actress3bio }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock 'main' %}

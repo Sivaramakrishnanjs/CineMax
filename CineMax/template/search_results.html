@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<div class="container mt-5 text-dark bg-light">
+    <h2>Search Results for "{{ query }}"</h2>
+
+    {% if hollywood_movies %}
+    <h3>Hollywood Movies</h3>
+    <ul>
+        {% for movie in hollywood_movies %}
+        <li>{{ movie.title }}
+            <a href="{% url 'hollywood_details' movie.id %}" class="btn btn-primary">Watch Now</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if tamil_movies %}
+    <h3>Tamil Movies</h3>
+    <ul>
+        {% for movie in tamil_movies %}
+        <li>{{ movie.title }}
+            <a href="{% url 'tamilmovie_details' movie.id %}" class="btn btn-primary">Watch Now</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if webseries_movies %}
+    <h3>Web Series</h3>
+    <ul>
+        {% for movie in webseries_movies %}
+        <li>{{ movie.title }}
+            <a href="{% url 'webseries_details' movie.id %}" class="btn btn-primary">Watch Now</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if anime_movies %}
+    <h3>Anime</h3>
+    <ul>
+        {% for movie in anime_movies %}
+        <li>{{ movie.title }}
+            <a href="{% url 'anime_details' movie.id %}" class="btn btn-primary">Watch Now</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if korean_movies %}
+    <h3>Korean Movies</h3>
+    <ul>
+        {% for movie in korean_movies %}
+        <li>{{ movie.title }}
+            <a href="{% url 'korean_details' movie.id %}" class="btn btn-primary">Watch Now</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if not_found %}
+    <p>No results found for "{{ query }}". Please try another search.</p>
+    {% endif %}
+</div>
+
+{% endblock 'main' %}

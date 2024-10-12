@@ -1,0 +1,60 @@
+body {
+    /* background-color:black; */
+    color: white;
+}
+
+.subscription-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+
+.container {
+    background-color: black;
+}
+
+.subscription-card:hover {
+    transform: scale(1.05);
+}
+
+.subscription-button {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.monthly-plan {
+    background-color: #daee22;
+    /* Netflix Red */
+}
+
+.yearly-plan {
+    background-color: #28a745;
+    /* Green */
+}
+
+.subscription-button:hover {
+    opacity: 0.9;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.plan-type {
+    font-size: 16px;
+    color: white;
+}

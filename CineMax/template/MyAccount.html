@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+
+
+<div class="container my-5 bg-light">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">My Account</h2>
+
+            {% if subscriptions %}
+                <div class="row">
+                    <div class="col-12">
+                        <h5><i class="bi bi-person-circle mr-2"></i> User Name:</h5>
+                        <p class="mb-4">{{ request.user.username }}</p>
+                    </div>
+                </div>
+                
+                {% for subscription in subscriptions %}
+                <div class="row">
+                    <div class="col-12">
+                        <h5><i class="bi bi-ticket-perforated-fill mr-2"></i> Subscription Plan:</h5>
+                        <p class="mb-4">{{ subscription.plan_type }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h5><i class="bi bi-cash-stack mr-2"></i> Subscription Amount:</h5>
+                        <p class="mb-4">RS.{{ subscription.amount }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="#" class="btn btn-primary">Manage Subscription</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-12">
+                        <p>No active subscriptions found.</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock 'main' %}

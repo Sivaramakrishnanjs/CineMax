@@ -1,0 +1,56 @@
+from django.conf import settings
+from django.conf.urls.static import static
+from CineMaxapp import views
+from django.urls import path
+
+urlpatterns = [
+    
+    path('home',views.home),
+    path('hollywood/', views.hollywood_movies),
+    path('tamil/', views.tamil_movies),
+    path('webseries/', views.web_series),
+    path('anime/', views.anime_movies),
+    path('korean/', views.korean_movies),
+    path('search/', views.search_results),
+    path('HWM/<cid>',views.HWM),
+    path('tamil/<tid>',views.TM),
+    path('Web/<wid>',views.WS),
+    path('anime/<aid>',views.AM),
+    path('korean/<kid>',views.KM),
+    path('videoHM/<trailer>',views.Hvideo),
+    path('videoTM/<trailer>',views.Tvideo),
+    path('videoWS/<trailer>',views.WSvideo),
+    path('videoAM/<trailer>',views.Avideo),
+    path('videoKM/<trailer>',views.Kvideo),
+    path('login',views.logindetails),
+    path('logout',views.user_logout),
+    path('register',views.register),
+    path('add_to_watchlist/<str:category>/<int:movie_id>/', views.add_to_watchlist, name='add_to_watchlist'),
+    path('remove/<cid>', views.remove, name='remove'),
+    path('watchlist/', views.watchlist, name='watchlist'),
+    path('subscription/', views.subscription_plans,name='subscription_plans'),
+    path('create_order/<str:plan_type>/', views.create_order, name='create_order'),
+    path('payment/success/', views.payment_success, name='payment_success'),
+    path('payment/failure/', views.payment_failure, name='payment_failure'),  
+    path('account',views.myaccount),
+    path('appletv',views.appletv),
+    path('collection',views.Collection),
+    path('devices',views.Devices),
+    path('FAQ',views.FAQ),
+    path('hbo',views.HBO),
+    path('max',views.MAX),
+    path('mpopular',views.Mpopular),
+    path('peacock',views.Peacock),
+    path('privacy',views.Privacy),
+    path('security',views.Security),
+    path('terms',views.Terms),
+    path('theater',views.Theater),
+    path('guide',views.Guide),
+    path('hollywood/<int:id>/', views.hollywood_details, name='hollywood_details'),
+    path('tamilMovies/<int:id>/', views.tamilmovie_details, name='tamilmovie_details'),
+    path('webseries/<int:id>/', views.webseries_details, name='webseries_details'),
+    path('anime/<int:id>/', views.anime_details, name='anime_details'),
+    path('korean/<int:id>/', views.korean_details, name='korean_details'),
+]
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
